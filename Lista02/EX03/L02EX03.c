@@ -23,43 +23,61 @@
 
 #include <stdio.h>
 
-int bin(int n, int b);
-int inv(int n)
+#define MAX 100000
+
+void bin(int n, int bs[], int aux);
+
 int main()
 {
-		int n;
+	int n, aux = 0, flg = 0;
+	int binstack[MAX];
 
-		scanf("%d", &n);
+	for(int i = 0 ; i < MAX ; i++)
+		binstack[i] = 0;
 
-		printf("%d\n", bin(n, 1));
+	scanf("%d", &n);
 
+	if(n == 0)
+	{
+		printf("%d\n", n);
 		return 0;
+	}
+
+	bin(n, binstack, aux);
+
+	for(int i = MAX ; i >= 0 ; i--)
+	{
+		if(binstack[i] == 1 || flg == 1)
+		{
+			if(flg == 0)
+				flg++;
+
+			printf("%d", binstack[i]);
+		}
+	}
+
+	printf("\n");
+
+	return 0;
 }
 
-int bin(int n, int b)
+void bin(int n, int bs[], int aux)
 {
-		if(n == 0)
-		{
-				b = inv(b);
-				return b;
-		}
-		if(n == 1)
-		{
-				b++;
-				b = inv(b);
-				return b;
-		}
-		if(n % 2)
-		{
-				bin( (n/2) , (b*10) )
-		}
-		else
-		{
-				bin( (n/2) , ((b + 1)*10) )
-		}
-}
+	if (n == 1)
+	{
+		bs[aux] = bs[aux] + 1;
+		// printf("(n = %d)Inserting 1 in binstack[%d] = %d\n", n, aux, bs[aux]);
+	}
+	else if(((n % 2) == 1))
+	{
+		bs[aux] =  bs[aux] + 1;
+		// printf("(n = %d)Inserting 1 in binstack[%d] = %d\n", n, aux, bs[aux]);
+		return bin((n / 2), bs, aux + 1);
+	}
+	else if((n % 2 == 0))
+	{
+		// printf("(n = %d)Inserting 0 in binstack[%d] = %d\n", n, aux, bs[aux]);
+		return bin((n / 2), bs, aux + 1);
+	}
 
-int inv(int n)
-{
-		
 }
