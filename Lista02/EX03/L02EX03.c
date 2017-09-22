@@ -14,8 +14,8 @@
 * ================================================================== *
 	Dados do aluno:
 
-	RA:
-	Nome:
+	RA: 743506
+	Nome: Andre Matheus Bariani Trava
 
 * ================================================================== */
 
@@ -39,7 +39,7 @@ int main()
 
 	if(n == 0)
 	{
-		printf("%d\n", n);
+		printf("%d", n);
 		return 0;
 	}
 
@@ -56,7 +56,7 @@ int main()
 		}
 	}
 
-	printf("\n");
+	// printf("\n");
 
 	return 0;
 }

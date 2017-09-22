@@ -30,7 +30,7 @@ int main()
 
 		scanf("%d", &n);
 
-		printf("%d", collatz(n));
+		printf("%d ", collatz(n));
 
 		return 0;
 }
